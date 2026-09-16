@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SaaS Metrics Dashboard</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, "Segoe UI", sans-serif; background: #f5f6f8;
+         color: #1a1d23; padding: 16px; max-width: 1200px; margin: 0 auto; }
+  h1 { font-size: 20px; margin-bottom: 4px; }
+  .headline { font-size: 14px; color: #374151; margin-bottom: 8px; }
+  .disclaimer { font-size: 12px; color: #8a6d1a; background: #fdf6dd;
+                border: 1px solid #e8d48b; border-radius: 6px; padding: 5px 10px;
+                display: inline-block; margin-bottom: 16px; }
+
+  /* ===== FIX #4: KPI hierarchy — MRR เป็น primary card (ใหญ่กว่า 2 คอลัมน์) ===== */
+  .grid-kpi { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; margin-bottom: 16px; }
+  .grid-kpi .card.secondary { grid-column: span 2; }
+  .grid-kpi .card.primary { grid-column: span 2; }
+  .grid-kpi .card.tertiary { grid-column: span 1; }
+  @media (max-width: 900px) {
+    .grid-kpi { grid-template-columns: repeat(2, 1fr); }
+    .grid-kpi .card.primary, .grid-kpi .card.secondary, .grid-kpi .card.tertiary { grid-column: span 1; }
+  }
+  .card { background: #fff; border: 1px solid #e4e7ec; border-radius: 10px;
+          padding: 14px; min-width: 0; }
+  .card .label { font-size: 11px; color: #6b7280; text-transform: uppercase;
+                 letter-spacing: .05em; }
+  .card .value { font-size: 24px; font-weight: 700; margin: 4px 0; }
+  .card.primary { border-color: #2563eb; background: linear-gradient(180deg, #fafbff, #fff); }
+  .card.primary .value { font-size: 34px; }
+  .card.primary .label { font-size: 12px; color: #2563eb; }
+  .card.tertiary .value { font-size: 19px; }
+  .delta { font-size: 12px; font-weight: 600; display: block; }
+  .delta.positive { color: #0d8a4f; }
+  .delta.negative { color: #cc3344; }
+  .callout { background: #fef2f2; border: 1px solid #f5c2c7; color: #a12633;
+             border-radius: 8px; padding: 10px 14px; font-size: 13px; margin-bottom: 16px; }
+  .callout.good { background: #f0fdf4; border-color: #bbf7d0; color: #166534; }
+
+  /* ===== FIX #3: Exec summary เป็น 3 bullets ===== */
+  .exec { background: #eff6ff; border: 1px solid #bfdbfe; color: #1e3a5f;
+          border-radius: 10px; padding: 14px 16px; font-size: 13px; line-height: 1.7;
+          margin-bottom: 16px; }
+  .exec ul { margin: 6px 0 0 18px; }
+  .exec li { margin-bottom: 6px; }
+  .exec b { color: #0b2a4a; }
+
+  .two-col { display: grid; grid-template-columns: 2fr 1fr; gap: 12px; margin-bottom: 16px; }
+  @media (max-width: 900px) { .two-col { grid-template-columns: 1fr; } }
+  .card h2 { font-size: 14px; margin-bottom: 10px; }
+  .card h2 .hint { font-size: 11px; font-weight: 400; color: #9aa1ab; margin-left: 6px; }
+  .seg-row { display: flex; justify-content: space-between; align-items: center;
+             padding: 8px 0; border-bottom: 1px solid #f0f1f3; }
+  .seg-row:last-child { border-bottom: none; }
+  .seg-name { font-weight: 600; text-transform: capitalize; font-size: 14px; }
+  .seg-meta { font-size: 11px; color: #6b7280; }
+  .seg-mrr { font-variant-numeric: tabular-nums; font-weight: 600; text-align: right; }
+  .spark-wrap { display: flex; align-items: center; gap: 6px; justify-content: flex-end; }
+  .spark-change { font-size: 11px; font-weight: 700; }
+  .spark-change.positive { color: #0d8a4f; }
+  .spark-change.negative { color: #cc3344; }
+  table { width: 100%; border-collapse: collapse; font-size: 12px; table-layout: fixed; }
+  th, td { padding: 5px 4px; text-align: right; border-bottom: 1px solid #f0f1f3;
+           overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  th:first-child, td:first-child { text-align: left; width: 18%; }
+  thead th { color: #6b7280; font-weight: 600; font-size: 10px; text-transform: uppercase; }
+  #anomaly-log { list-style: none; font-size: 13px; }
+  #anomaly-log li { padding: 7px 0; border-bottom: 1px solid #f0f1f3; }
+  #anomaly-log li.bad  { color: #a12633; }
+  #anomaly-log li.good { color: #166534; }
+  .anom-impact { display: block; font-size: 11px; color: #6b7280; }
+  /* ===== FIX #2: filter tabs ===== */
+  .tabs { display: flex; gap: 6px; margin-bottom: 8px; }
+  .tabs button { font-size: 12px; padding: 4px 10px; border-radius: 14px;
+                 border: 1px solid #d1d5db; background: #fff; cursor: pointer; color: #374151; }
+  .tabs button.active { background: #2563eb; border-color: #2563eb; color: #fff; }
+  .heat-cell { text-align: center !important; font-variant-numeric: tabular-nums; }
+  .share-bar { display: inline-block; height: 8px; border-radius: 4px;
+               background: #2563eb; vertical-align: middle; margin-left: 6px; }
+  footer { margin-top: 16px; font-size: 11px; color: #9aa1ab; line-height: 1.6; }
+</style>
+</head>
+<body>
+
+<h1>SaaS Metrics Dashboard</h1>
+<div class="headline" id="headline"></div>
+<div class="disclaimer" id="disclaimer"></div>
+
+<!-- ===== FIX #4: MRR = primary, churn/cac = secondary, arpu/ltvcac = tertiary ===== -->
+<div class="grid-kpi">
+  <div class="card primary" title="Monthly recurring revenue from active customers">
+    <div class="label">MRR — North Star</div><div class="value" id="mrr">—</div>
+    <span id="mrr-delta" class="delta" title="vs previous month"></span></div>
+  <div class="card secondary" title="% of customers who cancelled this month (lower = better)">
+    <div class="label">Churn Rate (monthly %)</div><div class="value" id="churn">—</div>
+    <span id="churn-delta" class="delta" title="vs previous month"></span></div>
+  <div class="card secondary" title="Marketing spend ÷ new customers (lower = better)">
+    <div class="label">CAC ($/customer)</div><div class="value" id="cac">—</div>
+    <span id="cac-delta" class="delta" title="vs previous month"></span></div>
+  <div class="card tertiary" title="Average revenue per customer per month">
+    <div class="label">ARPU ($/mo)</div><div class="value" id="arpu">—</div>
+    <span id="arpu-delta" class="delta" title="vs previous month"></span></div>
+  <div class="card tertiary" title="LTV ÷ CAC. Healthy SaaS benchmark ≈ 3+. Mature cohorts (12+ months) only.">
+    <div class="label">LTV:CAC (mature)</div><div class="value" id="ltvcac">—</div>
+    <span id="ltvcac-delta" class="delta"></span></div>
+</div>
+
+<div id="anomaly-callout"></div>
+
+<!-- ===== FIX #3: exec summary จะถูก render เป็น 3 bullets ===== -->
+<div class="exec" id="exec"></div>
+
+<div class="two-col">
+  <div class="card"><h2>MRR: Actual vs Target + Forecast
+    <span class="hint">blue = actual · orange dashed = target · grey dashed = 6-mo forecast with 95% CI</span></h2>
+    <canvas id="mrrChart" height="110"></canvas></div>
+  <div class="card"><h2>Segments
+    <span class="hint">churn = annualized % (KPI above is monthly)</span></h2>
+    <div id="segments"></div></div>
+</div>
+
+<div class="two-col">
+  <div class="card"><h2>Cohort Retention Heatmap
+    <span class="hint">% active after n months · green = above benchmark, red = below · — = not yet observable</span></h2>
+    <table id="cohort-table">
+      <thead><tr><th>Cohort</th><th>n</th><th>ret@1</th><th>ret@3</th><th>ret@6</th><th>ret@12</th><th>LTV:CAC</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <div class="card"><h2>Anomaly Log
+    <span class="hint">outside empirical 95% range OR |z| &gt; 3, last 18 months · ✅ favorable / ⚠️ unfavorable</span></h2>
+    <!-- ===== FIX #2b: filter tabs ===== -->
+    <div class="tabs" id="anom-tabs">
+      <button data-f="all" class="active">All</button>
+      <button data-f="bad">⚠️ Unfavorable</button>
+      <button data-f="good">✅ Favorable</button>
+    </div>
+    <ul id="anomaly-log"></ul></div>
+</div>
+
+<div class="card" style="margin-bottom:16px"><h2>Region × Segment — ARPU &amp; Customers
+  <span class="hint">avg monthly revenue per customer · green = above global ARPU, red = below</span></h2>
+    <table id="region-table"><thead><tr><th>Region</th><th>Enterprise</th><th>Midmarket</th><th>SMB</th><th>Total MRR / Share</th></tr></thead><tbody></tbody></table>
+</div>
+
+<footer id="footer">Data: customers.csv (synthetic, seed 42) · Pipeline: generate → aggregate → forecast → cohort → anomaly</footer>
+
+<script>
+function fmt(v) { return Number(v).toLocaleString(undefined, {maximumFractionDigits: 1}); }
+function avg(a) { return a.reduce(function (s, x) { return s + x; }, 0) / a.length; }
+
+/* ===== FIX #1: diverging heatmap — เขียวเมื่อเหนือ benchmark, แดงเมื่อต่ำกว่า =====
+   t = -1..1 (clamped) · anchor ที่ benchmark เช่น ret@1 = 80.1 */
+function divStyle(t, maxOpacity) {
+  maxOpacity = maxOpacity || 0.65;
+  t = Math.max(-1, Math.min(1, t));
+  var op = (0.06 + Math.abs(t) * maxOpacity).toFixed(2);
+  if (t >= 0)
+    return "background:rgba(13,138,79," + op + ");color:" +
+           (Math.abs(t) > 0.55 ? "#fff" : "#1a1d23") + ";";
+  return "background:rgba(204,51,68," + op + ");color:" +
+         (Math.abs(t) > 0.55 ? "#fff" : "#1a1d23") + ";";
+}
+/* ฟังก์ชันเก่าคงไว้สำหรับอย่างอื่น (ไม่ใช้ใน heatmap แล้ว) */
+function heatStyle(t) { return divStyle(t >= 0 ? 1 : -1, 0.1); }
+
+// ===== แยก anomaly ดี/ร้าย =====
+var METRIC_GOOD_DIRECTION = {
+  "actual_mrr":       1,
+  "arpu":             1,
+  "new_customers":    1,
+  "churn_rate":      -1,
+  "cac":             -1,
+  "marketing_spend": -1
+};
+function isFavorable(a) {
+  var g = METRIC_GOOD_DIRECTION[a.metric];
+  if (g === undefined) return a.direction !== "spike";
+  return a.direction === "spike" ? g > 0 : g < 0;
+}
+function anomalyTag(a) { return isFavorable(a) ? "✅" : "⚠️"; }
+
+// ===== FIX #2a: impact statement จาก delta_pct (field ใหม่จาก pipeline) =====
+function impactText(a) {
+  var pct = Math.abs(a.delta_pct != null ? a.delta_pct : 0);
+  var better = isFavorable(a) ? "favorable" : "unfavorable";
+  return a.metric + " " + a.direction + " " + pct.toFixed(1) + "% vs typical → " +
+         (better === "favorable" ? "favorable" : "~$" + fmt(Math.abs(a.delta_from_mean) * (a.metric === "marketing_spend" || a.metric === "cac" ? 1 : 1)) + " impact");
+}
+
+fetch("dashboard_data.json")
+  .then(function (r) { return r.json(); })
+  .then(function (data) {
+    var monthly = data.monthly, forecast = data.forecast, latest = data.kpi_latest;
+    var bench = data.retention_benchmark || { "1": 75, "3": 72, "6": 68, "12": 57 };
+
+    if (data.meta.synthetic) {
+      document.getElementById("disclaimer").textContent =
+        "⚠️ Synthetic demo data — customer-level simulation (seed 42)";
+    }
+
+    // ===== Headline =====
+    var d0 = latest.mom_delta;
+    var firstAnom = data.anomalies.length
+      ? " | " + (isFavorable(data.anomalies[0]) ? "Good news: " : "Alert: ") +
+        data.anomalies[0].metric + " " + data.anomalies[0].direction +
+        " in " + data.anomalies[0].month : "";
+    document.getElementById("headline").textContent =
+      "Last MRR $" + fmt(latest.mrr) + " (" + (d0.mrr_pct >= 0 ? "+" : "") + d0.mrr_pct +
+      "% MoM) | Churn " + latest.churn_rate + "%/mo | 6M Forecast $" +
+      fmt(forecast[forecast.length - 1].forecast_mrr) + firstAnom;
+
+    // ===== KPI deltas (เขียวเมื่อขยับไปทางที่ดี) =====
+    var kpis = [
+      { id: "mrr",   value: latest.mrr,        delta: d0.mrr_pct,     unit: "%",  goodWhenUp: true  },
+      { id: "churn", value: latest.churn_rate, delta: d0.churn_delta, unit: "pp", goodWhenUp: false },
+      { id: "cac",   value: latest.cac,        delta: d0.cac_pct,     unit: "%",  goodWhenUp: false },
+      { id: "arpu",  value: latest.arpu,       delta: d0.arpu_pct,    unit: "%",  goodWhenUp: true  }
+    ];
+    kpis.forEach(function (k) {
+      document.getElementById(k.id).textContent = fmt(k.value);
+      var el = document.getElementById(k.id + "-delta");
+      var isGood = k.goodWhenUp ? k.delta >= 0 : k.delta <= 0;
+      el.textContent = (k.delta >= 0 ? "▲ " : "▼ ") + Math.abs(k.delta) + k.unit;
+      el.className = "delta " + (isGood ? "positive" : "negative");
+    });
+
+    // ===== LTV:CAC (mature cohorts) =====
+    var END = new Date(data.meta.data_end.slice(0, 7) + "-01");
+    function ageMonths(c) {
+      var start = new Date(c.cohort + "-01");
+      return (END.getFullYear() - start.getFullYear()) * 12 +
+             (END.getMonth() - start.getMonth());
+    }
+    var mature = data.cohorts.filter(function (c) { return ageMonths(c) >= 12; });
+    var avgRatio = 0;
+    if (mature.length) {
+      avgRatio = mature.reduce(function (s, c) { return s + c.ltv_cac_ratio; }, 0) / mature.length;
+      document.getElementById("ltvcac").textContent = avgRatio.toFixed(2);
+      document.getElementById("ltvcac-delta").textContent =
+        "avg of " + mature.length + " mature cohorts";
+    }
+
+    // ===== FIX #3: Executive Summary → 3 bullets (improving / worsening / action) =====
+    var g = [];
+    for (var i = 1; i < monthly.length; i++)
+      g.push((monthly[i].actual_mrr / monthly[i - 1].actual_mrr - 1) * 100);
+    var gRecent = avg(g.slice(-6)), gPrior = avg(g.slice(-12, -6));
+
+    var goodAnoms = data.anomalies.filter(isFavorable).slice(0, 2);
+    var badAnoms  = data.anomalies.filter(function (a) { return !isFavorable(a); }).slice(0, 2);
+    function anomBrief(a) {
+      var pct = a.delta_pct != null ? " (" + (a.delta_pct >= 0 ? "+" : "") + a.delta_pct + "% vs typical)" : "";
+      return "<b>" + a.metric + "</b> " + a.direction + " in " + a.month + pct;
+    }
+
+    var execHtml = "<ul>" +
+      "<li><b>📈 What's improving:</b> MRR growth averaging <b>" + gRecent.toFixed(1) +
+      "%/mo</b> over the last 6 months (prior 6M: " + gPrior.toFixed(1) + "%/mo · latest month: " + d0.mrr_pct + "%)" +
+      (mature.length ? " · mature LTV:CAC <b>" + avgRatio.toFixed(2) + "</b> (" +
+        (avgRatio < 3 ? "below" : "around") + " ~3.0 benchmark)" : "") +
+      (goodAnoms.length ? " · " + goodAnoms.map(anomBrief).join(" · ") : "") + "</li>" +
+      "<li><b>📉 What's worsening:</b> " +
+      (badAnoms.length ? badAnoms.map(anomBrief).join(" · ") : "no unfavorable signals in the last 18 months") +
+      " · ret@1 ≈ " + bench["1"] + "% means ~1 in " + Math.round(100 / (100 - bench["1"])) + " new customers churns within month 1</li>" +
+      "<li><b>🎯 Recommended action:</b> fix onboarding drop-off in month 1, then rebuild acquisition economics before scaling paid spend" +
+      (mature.length && avgRatio < 3 ? " — LTV:CAC below benchmark does not support higher CAC yet" : "") + "</li>" +
+      "</ul>";
+    document.getElementById("exec").innerHTML = execHtml;
+
+    // ===== Forecast fit: R² + σ =====
+    var n = 12, xs = [], ys = [];
+    for (var j = monthly.length - n; j < monthly.length; j++) {
+      xs.push(j); ys.push(monthly[j].actual_mrr);
+    }
+    var mx = avg(xs), my = avg(ys), num = 0, den = 0;
+    for (var j2 = 0; j2 < n; j2++) {
+      num += (xs[j2] - mx) * (ys[j2] - my);
+      den += (xs[j2] - mx) * (xs[j2] - mx);
+    }
+    var slope = num / den, intercept = my - slope * mx;
+    var ssRes = 0, ssTot = 0;
+    for (var j3 = 0; j3 < n; j3++) {
+      ssRes += Math.pow(ys[j3] - (slope * xs[j3] + intercept), 2);
+      ssTot += Math.pow(ys[j3] - my, 2);
+    }
+    var r2 = 1 - ssRes / ssTot;
+    var sigma = Math.sqrt(ssRes / (n - 2));
+
+    // ===== MRR chart + 95% CI band =====
+    var labels = monthly.map(function (m) { return m.month + "-01"; });
+    forecast.forEach(function (f) { labels.push(f.month + "-01"); });
+    var fcData = [], upper = [], lower = [];
+    for (var p = 0; p < monthly.length - 1; p++) {
+      fcData.push(null); upper.push(null); lower.push(null);
+    }
+    fcData.push(monthly[monthly.length - 1].actual_mrr);
+    upper.push(monthly[monthly.length - 1].actual_mrr);
+    lower.push(monthly[monthly.length - 1].actual_mrr);
+    forecast.forEach(function (f, k) {
+      fcData.push(f.forecast_mrr);
+      var band = 1.96 * sigma * Math.sqrt(k + 1);
+      upper.push(f.forecast_mrr + band);
+      lower.push(Math.max(0, f.forecast_mrr - band));
+    });
+
+    new Chart(document.getElementById("mrrChart"), {
+      type: "line",
+      data: {
+        labels: labels,
+        datasets: [
+          { label: "Actual MRR",
+            data: monthly.map(function (m) { return m.actual_mrr; }),
+            borderColor: "#2563eb", backgroundColor: "rgba(37,99,235,.08)",
+            fill: true, tension: .3, pointRadius: 0, borderWidth: 2 },
+          { label: "Target",
+            data: monthly.map(function (m) { return m.target_mrr; }),
+            borderColor: "#f59e0b", borderDash: [4, 4], pointRadius: 0, borderWidth: 1.5 },
+          { label: "Forecast (6mo, 95% CI)", data: fcData,
+            borderColor: "#8a8f98", borderDash: [6, 4], pointRadius: 0, borderWidth: 2 },
+          { label: "CI upper", data: upper, borderColor: "transparent",
+            backgroundColor: "rgba(138,143,152,.15)", pointRadius: 0, borderWidth: 0, fill: "+1" },
+          { label: "CI lower", data: lower, borderColor: "transparent",
+            pointRadius: 0, borderWidth: 0 }
+        ]
+      },
+      options: {
+        interaction: { mode: "index", intersect: false },
+        plugins: {
+          legend: { position: "bottom", labels: { boxWidth: 12,
+            filter: function (i) {
+              return i.text !== "CI upper" && i.text !== "CI lower";
+            } } },
+          tooltip: { callbacks: { label: function (c) {
+            return c.dataset.label.indexOf("CI") === 0 ? null :
+                   c.dataset.label + ": $" + fmt(c.parsed.y);
+          } } }
+        },
+        scales: {
+          y: { ticks: { callback: function (v) { return (v / 1000) + "K"; } } },
+          /* ===== FIX #6: x-axis แสดงทุก quarter (Jan/Apr/Jul/Oct) + ปีเมื่อเปลี่ยนปี ===== */
+          x: { ticks: { maxRotation: 0, autoSkip: false, font: { size: 10 },
+            callback: function (v) {
+              var l = this.getLabelForValue(v);           // "2024-04-01"
+              var ym = l.substring(0, 7);                 // "2024-04"
+              var m = parseInt(ym.substring(5, 7), 10);
+              var isQuarter = (m === 1 || m === 4 || m === 7 || m === 10);
+              if (!isQuarter) return "";
+              return ym;                                  // แสดง "2024-04" ให้เห็นทั้งปีและเดือน
+            } } }
+        }
+      }
+    });
+
+    document.getElementById("footer").innerHTML =
+      "Data: customers.csv (synthetic, seed 42) · Forecast: linear trend on last 12 months, R² = " +
+      r2.toFixed(3) + ", 95% CI = ±1.96σ√k (σ = " + fmt(sigma) + ")";
+
+    // ===== Segments + sparkline =====
+    var segWrap = document.getElementById("segments");
+    data.segments.forEach(function (seg) {
+      var spark = seg.sparkline_6m;
+      var min = Math.min.apply(null, spark), max = Math.max.apply(null, spark);
+      var pts = spark.map(function (v, i) {
+        return (i * 100 / (spark.length - 1)).toFixed(1) + "," +
+               (24 - (v - min) / ((max - min) || 1) * 22).toFixed(1);
+      }).join(" ");
+      /* ===== FIX #5: % change 6M กำกับ sparkline ===== */
+      var chg = (spark[spark.length - 1] / spark[0] - 1) * 100;
+      var chgTxt = (chg >= 0 ? "+" : "") + chg.toFixed(1) + "% 6M";
+      var chgCls = chg >= 0 ? "positive" : "negative";
+      var row = document.createElement("div");
+      row.className = "seg-row";
+      row.innerHTML =
+        '<div><div class="seg-name">' + seg.segment + '</div>' +
+        '<div class="seg-meta">' + Number(seg.customers).toLocaleString() +
+        ' customers · ' + seg.share_pct + '% of MRR · churn ' + seg.churn_rate + '%/yr</div></div>' +
+        '<div class="spark-wrap"><span class="spark-change ' + chgCls + '">' + chgTxt + '</span>' +
+        '<svg viewBox="0 0 100 24" width="80" height="20" style="color:#2563eb">' +
+        '<polyline points="' + pts + '" fill="none" stroke="currentColor" stroke-width="2"/></svg></div>';
+      segWrap.appendChild(row);
+    });
+
+    // ===== FIX #1: Cohort heatmap — diverging vs retention_benchmark + "—" ตามอายุจริง =====
+    var tb = document.querySelector("#cohort-table tbody");
+    data.cohorts.forEach(function (c) {
+      var age = c.age_months != null ? c.age_months : ageMonths(c);
+      function cell(m) {
+        if (age < m) return "<td style='color:#c3c8d0'>—</td>";   // ยังวัดไม่ได้ ≠ 0%
+        var v = c.retention[String(m)];
+        if (v == null || v === 0) return "<td style='color:#c3c8d0'>—</td>";
+        var t = (v - bench[String(m)]) / 15;                      // ±15pp = เต็มสี
+        return '<td class="heat-cell" style="' + divStyle(t) + '">' + v + "%</td>";
+      }
+      var ltvCell;
+      if (age >= 12) {
+        var t2 = (c.ltv_cac_ratio - 3.0) / 3.0;                   // anchor benchmark 3.0, ±3 = เต็มสี
+        ltvCell = '<span style="' + divStyle(t2, 0.5) +
+                  'border-radius:4px;padding:1px 6px;display:inline-block">' +
+                  c.ltv_cac_ratio.toFixed(2) + "</span>";
+      } else ltvCell = "<span style='color:#c3c8d0'>—</span>";
+      var tr = document.createElement("tr");
+      tr.innerHTML = "<td>" + c.cohort + "</td><td>" + c.size + "</td>" +
+        cell(1) + cell(3) + cell(6) + cell(12) +
+        "<td>" + ltvCell + "</td>";
+      tb.appendChild(tr);
+    });
+
+    // ===== Anomaly callout + FIX #2b: filter tabs + impact =====
+    var log = document.getElementById("anomaly-log");
+    var anomList = data.anomalies;
+    var allGood = anomList.length && anomList.every(isFavorable);
+    if (!anomList.length) {
+      log.innerHTML = "<li>✅ No anomalies in the last 18 months>";
+    } else {
+      var box = document.createElement("div");
+      box.className = "callout" + (allGood ? " good" : "");
+      var shown = anomList.slice(0, 3).map(function (a) {
+        return anomalyTag(a) + " <b>" + a.metric + "</b> " + a.direction + " " +
+               (a.delta_pct != null ? Math.abs(a.delta_pct).toFixed(1) + "%" : "") +
+               " (" + a.month + ")";
+      }).join(" · ");
+      var more = anomList.length > 3
+        ? " · and " + (anomList.length - 3) + " more in log" : "";
+      box.innerHTML = (allGood ? "Favorable signals: " : "⚠️ Detected: ") +
+        shown + more;
+      document.getElementById("anomaly-callout").appendChild(box);
+    }
+
+    function renderLog(filter) {
+      log.innerHTML = "";
+      var rows = anomList.filter(function (a) {
+        if (filter === "good") return isFavorable(a);
+        if (filter === "bad") return !isFavorable(a);
+        return true;
+      });
+      if (!rows.length) {
+        log.innerHTML = "<li style='color:#9aa1ab'>No anomalies in this category</li>";
+        return;
+      }
+      rows.forEach(function (a) {
+        var li = document.createElement("li");
+        li.className = isFavorable(a) ? "good" : "bad";
+        li.innerHTML = anomalyTag(a) + " <b>" + a.month + "</b> — " + a.metric + " " +
+          a.direction + " to " + fmt(a.value) + " (z=" + a.z_score + ")" +
+          '<span class="anom-impact">' + impactText(a) + "</span>";
+        log.appendChild(li);
+      });
+    }
+    renderLog("all");
+    document.getElementById("anom-tabs").addEventListener("click", function (e) {
+      if (e.target.tagName !== "BUTTON") return;
+      document.querySelectorAll("#anom-tabs button").forEach(function (b) {
+        b.classList.remove("active");
+      });
+      e.target.classList.add("active");
+      renderLog(e.target.getAttribute("data-f"));
+    });
+
+    // ===== Region table — diverging ARPU (vs global ARPU) + share bar จาก data.regions =====
+    var globalArpu = latest.arpu;
+    var SEG_ORDER = ["enterprise", "midmarket", "smb"];
+    var maxArpu = 0;
+    data.regions.forEach(function (r) {
+      SEG_ORDER.forEach(function (s) {
+        var c = r.matrix[s];
+        if (c && c.customers > 0)
+          maxArpu = Math.max(maxArpu, c.mrr / c.customers);
+      });
+    });
+    var maxShare = Math.max.apply(null, data.regions.map(function (r) { return r.share_pct; }));
+    var rb = document.querySelector("#region-table tbody");
+    data.regions.forEach(function (r) {
+      var tr = document.createElement("tr");
+      var cells = "";
+      SEG_ORDER.forEach(function (s) {
+        var c = r.matrix[s];
+        if (!c || !c.customers) {
+          cells += '<td class="heat-cell" style="color:#c3c8d0">—</td>';
+          return;
+        }
+        var arpu = c.mrr / c.customers;
+        var t = (arpu - globalArpu) / globalArpu;
+        cells += '<td class="heat-cell" style="' + divStyle(t) + '">' +
+                 "<b>$" + arpu.toFixed(0) + "</b>" +
+                 '<span style="display:block;font-size:10px;color:#6b7280">' +
+                 Number(c.customers).toLocaleString() + " cus</span></td>";
+      });
+      var shareBar = '<span class="share-bar" style="width:' +
+        Math.max(4, r.share_pct / maxShare * 60) + 'px;opacity:' +
+        (0.35 + 0.65 * r.share_pct / maxShare).toFixed(2) + '"></span>';
+      tr.innerHTML = "<td><b>" + r.region + "</b></td>" + cells +
+        "<td>$" + fmt(r.mrr) + " · " + r.share_pct + "%" + shareBar + "</td>";
+      rb.appendChild(tr);
+    });
+
+  })
+  .catch(function (err) {
+    var d = document.getElementById("disclaimer");
+    d.textContent = "⚠️ Failed to load dashboard_data.json — " + err.message +
+      " (serve via: python -m http.server)";
+    d.style.color = "#a12633";
+    d.style.background = "#fef2f2";
+    d.style.borderColor = "#f5c2c7";
+  });
+</script>
+</body>
+</html>
+

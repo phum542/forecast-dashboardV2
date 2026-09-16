@@ -1,0 +1,1644 @@
+{
+ "meta": {
+  "generated_at": "2026-09-16T04:58:28.178904+00:00",
+  "data_end": "2025-06-30",
+  "synthetic": true
+ },
+ "kpi_latest": {
+  "mrr": 465246.21,
+  "churn_rate": 3.75,
+  "cac": 575.93,
+  "arpu": 92.73,
+  "mom_delta": {
+   "mrr_pct": 0.35,
+   "churn_delta": 0.47,
+   "cac_pct": -14.15,
+   "arpu_pct": -0.71
+  }
+ },
+ "monthly": [
+  {
+   "month": "2022-01",
+   "actual_mrr": 25414.45,
+   "target_mrr": 27955.9,
+   "churn_rate": 0.0,
+   "cac": 464.87,
+   "arpu": 109.55,
+   "new_customers": 232,
+   "marketing_spend": 107849.6,
+   "mom_delta": {
+    "mrr_pct": null,
+    "churn_delta": null,
+    "cac_pct": null,
+    "arpu_pct": null
+   }
+  },
+  {
+   "month": "2022-02",
+   "actual_mrr": 43212.08,
+   "target_mrr": 29912.81,
+   "churn_rate": 21.12,
+   "cac": 555.67,
+   "arpu": 108.03,
+   "new_customers": 217,
+   "marketing_spend": 120579.67,
+   "mom_delta": {
+    "mrr_pct": 70.03,
+    "churn_delta": 21.12,
+    "cac_pct": 19.53,
+    "arpu_pct": -1.39
+   }
+  },
+  {
+   "month": "2022-03",
+   "actual_mrr": 62881.28,
+   "target_mrr": 32006.7,
+   "churn_rate": 10.25,
+   "cac": 562.42,
+   "arpu": 105.33,
+   "new_customers": 238,
+   "marketing_spend": 133855.44,
+   "mom_delta": {
+    "mrr_pct": 45.52,
+    "churn_delta": -10.87,
+    "cac_pct": 1.21,
+    "arpu_pct": -2.5
+   }
+  },
+  {
+   "month": "2022-04",
+   "actual_mrr": 80670.0,
+   "target_mrr": 34247.17,
+   "churn_rate": 8.71,
+   "cac": 606.32,
+   "arpu": 104.49,
+   "new_customers": 227,
+   "marketing_spend": 137634.59,
+   "mom_delta": {
+    "mrr_pct": 28.29,
+    "churn_delta": -1.54,
+    "cac_pct": 7.81,
+    "arpu_pct": -0.8
+   }
+  },
+  {
+   "month": "2022-05",
+   "actual_mrr": 99833.98,
+   "target_mrr": 36644.48,
+   "churn_rate": 8.68,
+   "cac": 586.06,
+   "arpu": 105.2,
+   "new_customers": 244,
+   "marketing_spend": 142999.51,
+   "mom_delta": {
+    "mrr_pct": 23.76,
+    "churn_delta": -0.03,
+    "cac_pct": -3.34,
+    "arpu_pct": 0.68
+   }
+  },
+  {
+   "month": "2022-06",
+   "actual_mrr": 117412.2,
+   "target_mrr": 39209.59,
+   "churn_rate": 6.74,
+   "cac": 491.01,
+   "arpu": 103.08,
+   "new_customers": 254,
+   "marketing_spend": 124715.55,
+   "mom_delta": {
+    "mrr_pct": 17.61,
+    "churn_delta": -1.94,
+    "cac_pct": -16.22,
+    "arpu_pct": -2.02
+   }
+  },
+  {
+   "month": "2022-07",
+   "actual_mrr": 136538.4,
+   "target_mrr": 41954.26,
+   "churn_rate": 5.62,
+   "cac": 617.0,
+   "arpu": 101.67,
+   "new_customers": 268,
+   "marketing_spend": 165354.96,
+   "mom_delta": {
+    "mrr_pct": 16.29,
+    "churn_delta": -1.12,
+    "cac_pct": 25.66,
+    "arpu_pct": -1.37
+   }
+  },
+  {
+   "month": "2022-08",
+   "actual_mrr": 150787.59,
+   "target_mrr": 44891.06,
+   "churn_rate": 6.18,
+   "cac": 559.1,
+   "arpu": 100.06,
+   "new_customers": 247,
+   "marketing_spend": 138096.5,
+   "mom_delta": {
+    "mrr_pct": 10.44,
+    "churn_delta": 0.56,
+    "cac_pct": -9.38,
+    "arpu_pct": -1.58
+   }
+  },
+  {
+   "month": "2022-09",
+   "actual_mrr": 164470.82,
+   "target_mrr": 48033.43,
+   "churn_rate": 5.64,
+   "cac": 551.37,
+   "arpu": 99.68,
+   "new_customers": 228,
+   "marketing_spend": 125713.21,
+   "mom_delta": {
+    "mrr_pct": 9.07,
+    "churn_delta": -0.54,
+    "cac_pct": -1.38,
+    "arpu_pct": -0.38
+   }
+  },
+  {
+   "month": "2022-10",
+   "actual_mrr": 177775.63,
+   "target_mrr": 51395.77,
+   "churn_rate": 4.79,
+   "cac": 600.66,
+   "arpu": 98.22,
+   "new_customers": 239,
+   "marketing_spend": 143556.78,
+   "mom_delta": {
+    "mrr_pct": 8.09,
+    "churn_delta": -0.85,
+    "cac_pct": 8.94,
+    "arpu_pct": -1.46
+   }
+  },
+  {
+   "month": "2022-11",
+   "actual_mrr": 193606.83,
+   "target_mrr": 54993.48,
+   "churn_rate": 4.75,
+   "cac": 591.09,
+   "arpu": 98.13,
+   "new_customers": 249,
+   "marketing_spend": 147180.48,
+   "mom_delta": {
+    "mrr_pct": 8.91,
+    "churn_delta": -0.04,
+    "cac_pct": -1.59,
+    "arpu_pct": -0.09
+   }
+  },
+  {
+   "month": "2022-12",
+   "actual_mrr": 207299.26,
+   "target_mrr": 58843.02,
+   "churn_rate": 4.97,
+   "cac": 584.42,
+   "arpu": 97.46,
+   "new_customers": 252,
+   "marketing_spend": 147272.77,
+   "mom_delta": {
+    "mrr_pct": 7.07,
+    "churn_delta": 0.22,
+    "cac_pct": -1.13,
+    "arpu_pct": -0.68
+   }
+  },
+  {
+   "month": "2023-01",
+   "actual_mrr": 225679.72,
+   "target_mrr": 62962.03,
+   "churn_rate": 5.64,
+   "cac": 562.53,
+   "arpu": 99.68,
+   "new_customers": 257,
+   "marketing_spend": 144569.37,
+   "mom_delta": {
+    "mrr_pct": 8.87,
+    "churn_delta": 0.67,
+    "cac_pct": -3.75,
+    "arpu_pct": 2.28
+   }
+  },
+  {
+   "month": "2023-02",
+   "actual_mrr": 235600.07,
+   "target_mrr": 67369.37,
+   "churn_rate": 5.92,
+   "cac": 441.98,
+   "arpu": 99.33,
+   "new_customers": 242,
+   "marketing_spend": 106958.67,
+   "mom_delta": {
+    "mrr_pct": 4.4,
+    "churn_delta": 0.28,
+    "cac_pct": -21.43,
+    "arpu_pct": -0.35
+   }
+  },
+  {
+   "month": "2023-03",
+   "actual_mrr": 247828.06,
+   "target_mrr": 72085.23,
+   "churn_rate": 4.97,
+   "cac": 513.59,
+   "arpu": 99.45,
+   "new_customers": 238,
+   "marketing_spend": 122235.39,
+   "mom_delta": {
+    "mrr_pct": 5.19,
+    "churn_delta": -0.95,
+    "cac_pct": 16.2,
+    "arpu_pct": 0.12
+   }
+  },
+  {
+   "month": "2023-04",
+   "actual_mrr": 252174.01,
+   "target_mrr": 77131.2,
+   "churn_rate": 4.98,
+   "cac": 578.42,
+   "arpu": 98.12,
+   "new_customers": 202,
+   "marketing_spend": 116840.42,
+   "mom_delta": {
+    "mrr_pct": 1.75,
+    "churn_delta": 0.01,
+    "cac_pct": 12.62,
+    "arpu_pct": -1.34
+   }
+  },
+  {
+   "month": "2023-05",
+   "actual_mrr": 264561.06,
+   "target_mrr": 82530.38,
+   "churn_rate": 4.51,
+   "cac": 596.39,
+   "arpu": 98.57,
+   "new_customers": 230,
+   "marketing_spend": 137169.56,
+   "mom_delta": {
+    "mrr_pct": 4.91,
+    "churn_delta": -0.47,
+    "cac_pct": 3.11,
+    "arpu_pct": 0.46
+   }
+  },
+  {
+   "month": "2023-06",
+   "actual_mrr": 276184.28,
+   "target_mrr": 88307.51,
+   "churn_rate": 4.36,
+   "cac": 553.32,
+   "arpu": 98.78,
+   "new_customers": 229,
+   "marketing_spend": 126710.51,
+   "mom_delta": {
+    "mrr_pct": 4.39,
+    "churn_delta": -0.15,
+    "cac_pct": -7.22,
+    "arpu_pct": 0.21
+   }
+  },
+  {
+   "month": "2023-07",
+   "actual_mrr": 293306.34,
+   "target_mrr": 94489.03,
+   "churn_rate": 3.58,
+   "cac": 418.8,
+   "arpu": 98.46,
+   "new_customers": 283,
+   "marketing_spend": 118519.02,
+   "mom_delta": {
+    "mrr_pct": 6.2,
+    "churn_delta": -0.78,
+    "cac_pct": -24.31,
+    "arpu_pct": -0.32
+   }
+  },
+  {
+   "month": "2023-08",
+   "actual_mrr": 305210.98,
+   "target_mrr": 101103.26,
+   "churn_rate": 4.2,
+   "cac": 509.86,
+   "arpu": 97.7,
+   "new_customers": 270,
+   "marketing_spend": 137662.97,
+   "mom_delta": {
+    "mrr_pct": 4.06,
+    "churn_delta": 0.62,
+    "cac_pct": 21.74,
+    "arpu_pct": -0.77
+   }
+  },
+  {
+   "month": "2023-09",
+   "actual_mrr": 312734.71,
+   "target_mrr": 108180.49,
+   "churn_rate": 4.51,
+   "cac": 729.42,
+   "arpu": 97.79,
+   "new_customers": 215,
+   "marketing_spend": 156825.0,
+   "mom_delta": {
+    "mrr_pct": 2.47,
+    "churn_delta": 0.31,
+    "cac_pct": 43.06,
+    "arpu_pct": 0.09
+   }
+  },
+  {
+   "month": "2023-10",
+   "actual_mrr": 327236.46,
+   "target_mrr": 115753.13,
+   "churn_rate": 3.56,
+   "cac": 582.07,
+   "arpu": 97.68,
+   "new_customers": 266,
+   "marketing_spend": 154831.18,
+   "mom_delta": {
+    "mrr_pct": 4.64,
+    "churn_delta": -0.95,
+    "cac_pct": -20.2,
+    "arpu_pct": -0.11
+   }
+  },
+  {
+   "month": "2023-11",
+   "actual_mrr": 337520.94,
+   "target_mrr": 123855.85,
+   "churn_rate": 3.91,
+   "cac": 623.1,
+   "arpu": 97.1,
+   "new_customers": 257,
+   "marketing_spend": 160135.5,
+   "mom_delta": {
+    "mrr_pct": 3.14,
+    "churn_delta": 0.35,
+    "cac_pct": 7.05,
+    "arpu_pct": -0.59
+   }
+  },
+  {
+   "month": "2023-12",
+   "actual_mrr": 345495.72,
+   "target_mrr": 132525.76,
+   "churn_rate": 4.29,
+   "cac": 567.28,
+   "arpu": 96.62,
+   "new_customers": 249,
+   "marketing_spend": 141252.67,
+   "mom_delta": {
+    "mrr_pct": 2.36,
+    "churn_delta": 0.38,
+    "cac_pct": -8.96,
+    "arpu_pct": -0.49
+   }
+  },
+  {
+   "month": "2024-01",
+   "actual_mrr": 354913.64,
+   "target_mrr": 141802.56,
+   "churn_rate": 3.41,
+   "cac": 537.93,
+   "arpu": 96.44,
+   "new_customers": 226,
+   "marketing_spend": 121571.72,
+   "mom_delta": {
+    "mrr_pct": 2.73,
+    "churn_delta": -0.88,
+    "cac_pct": -5.17,
+    "arpu_pct": -0.19
+   }
+  },
+  {
+   "month": "2024-02",
+   "actual_mrr": 362492.86,
+   "target_mrr": 151728.74,
+   "churn_rate": 4.54,
+   "cac": 541.63,
+   "arpu": 96.98,
+   "new_customers": 225,
+   "marketing_spend": 121866.16,
+   "mom_delta": {
+    "mrr_pct": 2.14,
+    "churn_delta": 1.13,
+    "cac_pct": 0.69,
+    "arpu_pct": 0.56
+   }
+  },
+  {
+   "month": "2024-03",
+   "actual_mrr": 366999.61,
+   "target_mrr": 162349.75,
+   "churn_rate": 3.91,
+   "cac": 601.51,
+   "arpu": 96.4,
+   "new_customers": 215,
+   "marketing_spend": 129324.92,
+   "mom_delta": {
+    "mrr_pct": 1.24,
+    "churn_delta": -0.63,
+    "cac_pct": 11.06,
+    "arpu_pct": -0.6
+   }
+  },
+  {
+   "month": "2024-04",
+   "actual_mrr": 372696.49,
+   "target_mrr": 173714.23,
+   "churn_rate": 3.6,
+   "cac": 542.83,
+   "arpu": 95.42,
+   "new_customers": 236,
+   "marketing_spend": 128108.33,
+   "mom_delta": {
+    "mrr_pct": 1.55,
+    "churn_delta": -0.31,
+    "cac_pct": -9.76,
+    "arpu_pct": -1.02
+   }
+  },
+  {
+   "month": "2024-05",
+   "actual_mrr": 379591.99,
+   "target_mrr": 185874.23,
+   "churn_rate": 3.81,
+   "cac": 542.58,
+   "arpu": 95.02,
+   "new_customers": 238,
+   "marketing_spend": 129134.22,
+   "mom_delta": {
+    "mrr_pct": 1.85,
+    "churn_delta": 0.21,
+    "cac_pct": -0.05,
+    "arpu_pct": -0.42
+   }
+  },
+  {
+   "month": "2024-06",
+   "actual_mrr": 383037.33,
+   "target_mrr": 198885.42,
+   "churn_rate": 3.83,
+   "cac": 630.37,
+   "arpu": 94.34,
+   "new_customers": 218,
+   "marketing_spend": 137419.58,
+   "mom_delta": {
+    "mrr_pct": 0.91,
+    "churn_delta": 0.02,
+    "cac_pct": 16.18,
+    "arpu_pct": -0.72
+   }
+  },
+  {
+   "month": "2024-07",
+   "actual_mrr": 394596.66,
+   "target_mrr": 212807.4,
+   "churn_rate": 3.47,
+   "cac": 505.95,
+   "arpu": 94.95,
+   "new_customers": 237,
+   "marketing_spend": 119911.1,
+   "mom_delta": {
+    "mrr_pct": 3.02,
+    "churn_delta": -0.36,
+    "cac_pct": -19.74,
+    "arpu_pct": 0.65
+   }
+  },
+  {
+   "month": "2024-08",
+   "actual_mrr": 401699.57,
+   "target_mrr": 227703.92,
+   "churn_rate": 3.44,
+   "cac": 566.8,
+   "arpu": 93.75,
+   "new_customers": 272,
+   "marketing_spend": 154168.87,
+   "mom_delta": {
+    "mrr_pct": 1.8,
+    "churn_delta": -0.03,
+    "cac_pct": 12.03,
+    "arpu_pct": -1.26
+   }
+  },
+  {
+   "month": "2024-09",
+   "actual_mrr": 406885.8,
+   "target_mrr": 243643.2,
+   "churn_rate": 3.64,
+   "cac": 703.62,
+   "arpu": 93.54,
+   "new_customers": 221,
+   "marketing_spend": 155499.2,
+   "mom_delta": {
+    "mrr_pct": 1.29,
+    "churn_delta": 0.2,
+    "cac_pct": 24.14,
+    "arpu_pct": -0.22
+   }
+  },
+  {
+   "month": "2024-10",
+   "actual_mrr": 417179.98,
+   "target_mrr": 260698.22,
+   "churn_rate": 3.08,
+   "cac": 609.12,
+   "arpu": 93.35,
+   "new_customers": 253,
+   "marketing_spend": 154106.97,
+   "mom_delta": {
+    "mrr_pct": 2.53,
+    "churn_delta": -0.56,
+    "cac_pct": -13.43,
+    "arpu_pct": -0.2
+   }
+  },
+  {
+   "month": "2024-11",
+   "actual_mrr": 420045.19,
+   "target_mrr": 278947.09,
+   "churn_rate": 3.58,
+   "cac": 750.14,
+   "arpu": 92.93,
+   "new_customers": 211,
+   "marketing_spend": 158278.78,
+   "mom_delta": {
+    "mrr_pct": 0.69,
+    "churn_delta": 0.5,
+    "cac_pct": 23.15,
+    "arpu_pct": -0.45
+   }
+  },
+  {
+   "month": "2024-12",
+   "actual_mrr": 426905.88,
+   "target_mrr": 298473.39,
+   "churn_rate": 3.72,
+   "cac": 656.69,
+   "arpu": 92.7,
+   "new_customers": 253,
+   "marketing_spend": 166143.53,
+   "mom_delta": {
+    "mrr_pct": 1.63,
+    "churn_delta": 0.14,
+    "cac_pct": -12.46,
+    "arpu_pct": -0.25
+   }
+  },
+  {
+   "month": "2025-01",
+   "actual_mrr": 433892.42,
+   "target_mrr": 319366.53,
+   "churn_rate": 3.24,
+   "cac": 501.59,
+   "arpu": 92.34,
+   "new_customers": 243,
+   "marketing_spend": 121886.06,
+   "mom_delta": {
+    "mrr_pct": 1.64,
+    "churn_delta": -0.48,
+    "cac_pct": -23.62,
+    "arpu_pct": -0.39
+   }
+  },
+  {
+   "month": "2025-02",
+   "actual_mrr": 434012.25,
+   "target_mrr": 341722.19,
+   "churn_rate": 3.62,
+   "cac": 594.76,
+   "arpu": 92.23,
+   "new_customers": 177,
+   "marketing_spend": 105272.93,
+   "mom_delta": {
+    "mrr_pct": 0.03,
+    "churn_delta": 0.38,
+    "cac_pct": 18.57,
+    "arpu_pct": -0.12
+   }
+  },
+  {
+   "month": "2025-03",
+   "actual_mrr": 442836.45,
+   "target_mrr": 365642.74,
+   "churn_rate": 2.97,
+   "cac": 577.73,
+   "arpu": 91.93,
+   "new_customers": 251,
+   "marketing_spend": 145010.51,
+   "mom_delta": {
+    "mrr_pct": 2.03,
+    "churn_delta": -0.65,
+    "cac_pct": -2.86,
+    "arpu_pct": -0.33
+   }
+  },
+  {
+   "month": "2025-04",
+   "actual_mrr": 454333.46,
+   "target_mrr": 391237.73,
+   "churn_rate": 2.99,
+   "cac": 582.19,
+   "arpu": 92.61,
+   "new_customers": 233,
+   "marketing_spend": 135649.43,
+   "mom_delta": {
+    "mrr_pct": 2.6,
+    "churn_delta": 0.02,
+    "cac_pct": 0.77,
+    "arpu_pct": 0.74
+   }
+  },
+  {
+   "month": "2025-05",
+   "actual_mrr": 463610.92,
+   "target_mrr": 418624.37,
+   "churn_rate": 3.28,
+   "cac": 670.84,
+   "arpu": 93.39,
+   "new_customers": 219,
+   "marketing_spend": 146913.43,
+   "mom_delta": {
+    "mrr_pct": 2.04,
+    "churn_delta": 0.29,
+    "cac_pct": 15.23,
+    "arpu_pct": 0.84
+   }
+  },
+  {
+   "month": "2025-06",
+   "actual_mrr": 465246.21,
+   "target_mrr": 447928.08,
+   "churn_rate": 3.75,
+   "cac": 575.93,
+   "arpu": 92.73,
+   "new_customers": 239,
+   "marketing_spend": 137648.02,
+   "mom_delta": {
+    "mrr_pct": 0.35,
+    "churn_delta": 0.47,
+    "cac_pct": -14.15,
+    "arpu_pct": -0.71
+   }
+  }
+ ],
+ "forecast": [
+  {
+   "month": "2025-07",
+   "forecast_mrr": 472004.89
+  },
+  {
+   "month": "2025-08",
+   "forecast_mrr": 478451.22
+  },
+  {
+   "month": "2025-09",
+   "forecast_mrr": 484897.55
+  },
+  {
+   "month": "2025-10",
+   "forecast_mrr": 491343.88
+  },
+  {
+   "month": "2025-11",
+   "forecast_mrr": 497790.22
+  },
+  {
+   "month": "2025-12",
+   "forecast_mrr": 504236.55
+  }
+ ],
+ "segments": [
+  {
+   "segment": "enterprise",
+   "customers": 488,
+   "mrr": 178937.97,
+   "share_pct": 38.5,
+   "churn_rate": 48.7,
+   "sparkline_6m": [
+    143518.72,
+    148726.15,
+    154242.84,
+    162931.81,
+    171877.41,
+    178937.97
+   ]
+  },
+  {
+   "segment": "midmarket",
+   "customers": 1789,
+   "mrr": 197889.81,
+   "share_pct": 42.5,
+   "churn_rate": 49.5,
+   "sparkline_6m": [
+    164465.71,
+    169255.13,
+    177360.55,
+    183838.88,
+    189711.1,
+    197889.81
+   ]
+  },
+  {
+   "segment": "smb",
+   "customers": 2740,
+   "mrr": 88418.43,
+   "share_pct": 19.0,
+   "churn_rate": 50.2,
+   "sparkline_6m": [
+    73531.26,
+    75843.88,
+    79010.24,
+    81839.42,
+    84335.63,
+    88418.43
+   ]
+  }
+ ],
+ "cohorts": [
+  {
+   "cohort": "2022-01",
+   "size": 232,
+   "age_months": 41,
+   "retention": {
+    "1": 78.9,
+    "3": 76.7,
+    "6": 70.3,
+    "12": 61.2
+   },
+   "avg_monthly_fee": 109.55,
+   "ltv": 2172.01,
+   "ltv_cac_ratio": 3.69
+  },
+  {
+   "cohort": "2022-02",
+   "size": 217,
+   "age_months": 40,
+   "retention": {
+    "1": 82.5,
+    "3": 78.3,
+    "6": 71.4,
+    "12": 62.7
+   },
+   "avg_monthly_fee": 108.39,
+   "ltv": 2160.84,
+   "ltv_cac_ratio": 3.67
+  },
+  {
+   "cohort": "2022-03",
+   "size": 238,
+   "age_months": 39,
+   "retention": {
+    "1": 80.3,
+    "3": 74.4,
+    "6": 71.0,
+    "12": 60.1
+   },
+   "avg_monthly_fee": 99.15,
+   "ltv": 2001.0,
+   "ltv_cac_ratio": 3.4
+  },
+  {
+   "cohort": "2022-04",
+   "size": 227,
+   "age_months": 38,
+   "retention": {
+    "1": 78.9,
+    "3": 74.0,
+    "6": 67.4,
+    "12": 52.9
+   },
+   "avg_monthly_fee": 104.88,
+   "ltv": 1907.67,
+   "ltv_cac_ratio": 3.24
+  },
+  {
+   "cohort": "2022-05",
+   "size": 244,
+   "age_months": 37,
+   "retention": {
+    "1": 82.0,
+    "3": 79.5,
+    "6": 70.5,
+    "12": 54.1
+   },
+   "avg_monthly_fee": 102.41,
+   "ltv": 1889.47,
+   "ltv_cac_ratio": 3.21
+  },
+  {
+   "cohort": "2022-06",
+   "size": 254,
+   "age_months": 36,
+   "retention": {
+    "1": 84.3,
+    "3": 78.3,
+    "6": 73.2,
+    "12": 58.3
+   },
+   "avg_monthly_fee": 97.06,
+   "ltv": 1949.28,
+   "ltv_cac_ratio": 3.31
+  },
+  {
+   "cohort": "2022-07",
+   "size": 268,
+   "age_months": 35,
+   "retention": {
+    "1": 79.1,
+    "3": 73.5,
+    "6": 66.0,
+    "12": 57.8
+   },
+   "avg_monthly_fee": 97.8,
+   "ltv": 1793.78,
+   "ltv_cac_ratio": 3.05
+  },
+  {
+   "cohort": "2022-08",
+   "size": 247,
+   "age_months": 34,
+   "retention": {
+    "1": 77.7,
+    "3": 74.5,
+    "6": 69.2,
+    "12": 56.7
+   },
+   "avg_monthly_fee": 93.0,
+   "ltv": 1730.55,
+   "ltv_cac_ratio": 2.94
+  },
+  {
+   "cohort": "2022-09",
+   "size": 228,
+   "age_months": 33,
+   "retention": {
+    "1": 79.8,
+    "3": 77.2,
+    "6": 64.9,
+    "12": 50.4
+   },
+   "avg_monthly_fee": 97.77,
+   "ltv": 1650.54,
+   "ltv_cac_ratio": 2.8
+  },
+  {
+   "cohort": "2022-10",
+   "size": 239,
+   "age_months": 32,
+   "retention": {
+    "1": 79.1,
+    "3": 75.3,
+    "6": 68.2,
+    "12": 54.0
+   },
+   "avg_monthly_fee": 88.58,
+   "ltv": 1509.11,
+   "ltv_cac_ratio": 2.56
+  },
+  {
+   "cohort": "2022-11",
+   "size": 249,
+   "age_months": 31,
+   "retention": {
+    "1": 77.5,
+    "3": 75.1,
+    "6": 69.5,
+    "12": 58.2
+   },
+   "avg_monthly_fee": 104.23,
+   "ltv": 1828.96,
+   "ltv_cac_ratio": 3.11
+  },
+  {
+   "cohort": "2022-12",
+   "size": 252,
+   "age_months": 30,
+   "retention": {
+    "1": 76.2,
+    "3": 71.4,
+    "6": 64.7,
+    "12": 53.6
+   },
+   "avg_monthly_fee": 95.78,
+   "ltv": 1577.0,
+   "ltv_cac_ratio": 2.68
+  },
+  {
+   "cohort": "2023-01",
+   "size": 257,
+   "age_months": 29,
+   "retention": {
+    "1": 76.7,
+    "3": 72.8,
+    "6": 70.0,
+    "12": 57.2
+   },
+   "avg_monthly_fee": 116.15,
+   "ltv": 1952.69,
+   "ltv_cac_ratio": 3.32
+  },
+  {
+   "cohort": "2023-02",
+   "size": 242,
+   "age_months": 28,
+   "retention": {
+    "1": 79.3,
+    "3": 74.8,
+    "6": 71.1,
+    "12": 61.2
+   },
+   "avg_monthly_fee": 102.17,
+   "ltv": 1737.69,
+   "ltv_cac_ratio": 2.95
+  },
+  {
+   "cohort": "2023-03",
+   "size": 238,
+   "age_months": 27,
+   "retention": {
+    "1": 80.7,
+    "3": 76.9,
+    "6": 70.6,
+    "12": 58.0
+   },
+   "avg_monthly_fee": 97.05,
+   "ltv": 1591.82,
+   "ltv_cac_ratio": 2.7
+  },
+  {
+   "cohort": "2023-04",
+   "size": 202,
+   "age_months": 26,
+   "retention": {
+    "1": 78.7,
+    "3": 74.3,
+    "6": 67.8,
+    "12": 56.4
+   },
+   "avg_monthly_fee": 89.81,
+   "ltv": 1358.01,
+   "ltv_cac_ratio": 2.31
+  },
+  {
+   "cohort": "2023-05",
+   "size": 230,
+   "age_months": 25,
+   "retention": {
+    "1": 77.8,
+    "3": 77.0,
+    "6": 71.3,
+    "12": 55.7
+   },
+   "avg_monthly_fee": 97.65,
+   "ltv": 1487.91,
+   "ltv_cac_ratio": 2.53
+  },
+  {
+   "cohort": "2023-06",
+   "size": 229,
+   "age_months": 24,
+   "retention": {
+    "1": 82.5,
+    "3": 79.5,
+    "6": 76.4,
+    "12": 61.1
+   },
+   "avg_monthly_fee": 91.56,
+   "ltv": 1450.17,
+   "ltv_cac_ratio": 2.46
+  },
+  {
+   "cohort": "2023-07",
+   "size": 283,
+   "age_months": 23,
+   "retention": {
+    "1": 79.9,
+    "3": 78.1,
+    "6": 71.4,
+    "12": 58.0
+   },
+   "avg_monthly_fee": 94.17,
+   "ltv": 1389.64,
+   "ltv_cac_ratio": 2.36
+  },
+  {
+   "cohort": "2023-08",
+   "size": 270,
+   "age_months": 22,
+   "retention": {
+    "1": 80.0,
+    "3": 75.2,
+    "6": 69.6,
+    "12": 54.4
+   },
+   "avg_monthly_fee": 90.76,
+   "ltv": 1248.77,
+   "ltv_cac_ratio": 2.12
+  },
+  {
+   "cohort": "2023-09",
+   "size": 215,
+   "age_months": 21,
+   "retention": {
+    "1": 80.9,
+    "3": 78.1,
+    "6": 72.6,
+    "12": 61.9
+   },
+   "avg_monthly_fee": 95.69,
+   "ltv": 1378.78,
+   "ltv_cac_ratio": 2.34
+  },
+  {
+   "cohort": "2023-10",
+   "size": 266,
+   "age_months": 20,
+   "retention": {
+    "1": 82.0,
+    "3": 78.9,
+    "6": 72.9,
+    "12": 63.2
+   },
+   "avg_monthly_fee": 92.65,
+   "ltv": 1304.92,
+   "ltv_cac_ratio": 2.22
+  },
+  {
+   "cohort": "2023-11",
+   "size": 257,
+   "age_months": 19,
+   "retention": {
+    "1": 75.9,
+    "3": 70.0,
+    "6": 63.8,
+    "12": 53.7
+   },
+   "avg_monthly_fee": 76.82,
+   "ltv": 912.27,
+   "ltv_cac_ratio": 1.55
+  },
+  {
+   "cohort": "2023-12",
+   "size": 249,
+   "age_months": 18,
+   "retention": {
+    "1": 80.3,
+    "3": 73.1,
+    "6": 66.3,
+    "12": 55.0
+   },
+   "avg_monthly_fee": 92.98,
+   "ltv": 1095.96,
+   "ltv_cac_ratio": 1.86
+  },
+  {
+   "cohort": "2024-01",
+   "size": 226,
+   "age_months": 17,
+   "retention": {
+    "1": 74.8,
+    "3": 73.0,
+    "6": 68.1,
+    "12": 57.1
+   },
+   "avg_monthly_fee": 84.48,
+   "ltv": 962.59,
+   "ltv_cac_ratio": 1.64
+  },
+  {
+   "cohort": "2024-02",
+   "size": 225,
+   "age_months": 16,
+   "retention": {
+    "1": 76.4,
+    "3": 72.9,
+    "6": 68.0,
+    "12": 57.8
+   },
+   "avg_monthly_fee": 107.05,
+   "ltv": 1170.13,
+   "ltv_cac_ratio": 1.99
+  },
+  {
+   "cohort": "2024-03",
+   "size": 215,
+   "age_months": 15,
+   "retention": {
+    "1": 76.7,
+    "3": 74.9,
+    "6": 67.4,
+    "12": 54.4
+   },
+   "avg_monthly_fee": 87.42,
+   "ltv": 904.09,
+   "ltv_cac_ratio": 1.54
+  },
+  {
+   "cohort": "2024-04",
+   "size": 236,
+   "age_months": 14,
+   "retention": {
+    "1": 80.9,
+    "3": 76.7,
+    "6": 71.2,
+    "12": 60.6
+   },
+   "avg_monthly_fee": 85.07,
+   "ltv": 873.92,
+   "ltv_cac_ratio": 1.49
+  },
+  {
+   "cohort": "2024-05",
+   "size": 238,
+   "age_months": 13,
+   "retention": {
+    "1": 79.4,
+    "3": 75.6,
+    "6": 68.5,
+    "12": 58.8
+   },
+   "avg_monthly_fee": 86.4,
+   "ltv": 818.77,
+   "ltv_cac_ratio": 1.39
+  },
+  {
+   "cohort": "2024-06",
+   "size": 218,
+   "age_months": 12,
+   "retention": {
+    "1": 81.7,
+    "3": 78.4,
+    "6": 71.1,
+    "12": 59.2
+   },
+   "avg_monthly_fee": 82.73,
+   "ltv": 762.95,
+   "ltv_cac_ratio": 1.3
+  },
+  {
+   "cohort": "2024-07",
+   "size": 237,
+   "age_months": 11,
+   "retention": {
+    "1": 85.2,
+    "3": 76.8,
+    "6": 72.6,
+    "12": 0.0
+   },
+   "avg_monthly_fee": 101.81,
+   "ltv": 881.07,
+   "ltv_cac_ratio": 1.5
+  },
+  {
+   "cohort": "2024-08",
+   "size": 272,
+   "age_months": 10,
+   "retention": {
+    "1": 83.5,
+    "3": 80.9,
+    "6": 73.5,
+    "12": 0.0
+   },
+   "avg_monthly_fee": 81.56,
+   "ltv": 663.11,
+   "ltv_cac_ratio": 1.13
+  },
+  {
+   "cohort": "2024-09",
+   "size": 221,
+   "age_months": 9,
+   "retention": {
+    "1": 82.8,
+    "3": 79.2,
+    "6": 76.0,
+    "12": 0.0
+   },
+   "avg_monthly_fee": 89.74,
+   "ltv": 678.1,
+   "ltv_cac_ratio": 1.15
+  },
+  {
+   "cohort": "2024-10",
+   "size": 253,
+   "age_months": 8,
+   "retention": {
+    "1": 82.6,
+    "3": 79.4,
+    "6": 74.3,
+    "12": 0.0
+   },
+   "avg_monthly_fee": 86.75,
+   "ltv": 588.23,
+   "ltv_cac_ratio": 1.0
+  },
+  {
+   "cohort": "2024-11",
+   "size": 211,
+   "age_months": 7,
+   "retention": {
+    "1": 78.7,
+    "3": 74.9,
+    "6": 71.6,
+    "12": 0.0
+   },
+   "avg_monthly_fee": 93.3,
+   "ltv": 544.55,
+   "ltv_cac_ratio": 0.93
+  },
+  {
+   "cohort": "2024-12",
+   "size": 253,
+   "age_months": 6,
+   "retention": {
+    "1": 82.6,
+    "3": 77.9,
+    "6": 73.1,
+    "12": 0.0
+   },
+   "avg_monthly_fee": 80.47,
+   "ltv": 424.46,
+   "ltv_cac_ratio": 0.72
+  },
+  {
+   "cohort": "2025-01",
+   "size": 243,
+   "age_months": 5,
+   "retention": {
+    "1": 79.0,
+    "3": 76.1,
+    "6": 0.0,
+    "12": 0.0
+   },
+   "avg_monthly_fee": 89.01,
+   "ltv": 393.2,
+   "ltv_cac_ratio": 0.67
+  },
+  {
+   "cohort": "2025-02",
+   "size": 177,
+   "age_months": 4,
+   "retention": {
+    "1": 84.2,
+    "3": 79.7,
+    "6": 0.0,
+    "12": 0.0
+   },
+   "avg_monthly_fee": 91.16,
+   "ltv": 349.96,
+   "ltv_cac_ratio": 0.59
+  },
+  {
+   "cohort": "2025-03",
+   "size": 251,
+   "age_months": 3,
+   "retention": {
+    "1": 84.1,
+    "3": 80.1,
+    "6": 0.0,
+    "12": 0.0
+   },
+   "avg_monthly_fee": 82.7,
+   "ltv": 253.2,
+   "ltv_cac_ratio": 0.43
+  },
+  {
+   "cohort": "2025-04",
+   "size": 233,
+   "age_months": 2,
+   "retention": {
+    "1": 80.7,
+    "3": 0.0,
+    "6": 0.0,
+    "12": 0.0
+   },
+   "avg_monthly_fee": 97.81,
+   "ltv": 214.93,
+   "ltv_cac_ratio": 0.37
+  },
+  {
+   "cohort": "2025-05",
+   "size": 219,
+   "age_months": 1,
+   "retention": {
+    "1": 78.5,
+    "3": 0.0,
+    "6": 0.0,
+    "12": 0.0
+   },
+   "avg_monthly_fee": 103.93,
+   "ltv": 144.74,
+   "ltv_cac_ratio": 0.25
+  },
+  {
+   "cohort": "2025-06",
+   "size": 239,
+   "age_months": 0,
+   "retention": {
+    "1": 0.0,
+    "3": 0.0,
+    "6": 0.0,
+    "12": 0.0
+   },
+   "avg_monthly_fee": 80.85,
+   "ltv": 40.42,
+   "ltv_cac_ratio": 0.07
+  }
+ ],
+ "retention_benchmark": {
+  "1": 80.1,
+  "3": 76.2,
+  "6": 70.2,
+  "12": 57.5
+ },
+ "regions": [
+  {
+   "region": "North America",
+   "mrr": 226591.89,
+   "share_pct": 48.7,
+   "matrix": {
+    "enterprise": {
+     "customers": 217,
+     "mrr": 87562.16
+    },
+    "midmarket": {
+     "customers": 777,
+     "mrr": 95438.32
+    },
+    "smb": {
+     "customers": 1222,
+     "mrr": 43591.41
+    }
+   }
+  },
+  {
+   "region": "Europe",
+   "mrr": 135645.88,
+   "share_pct": 29.2,
+   "matrix": {
+    "enterprise": {
+     "customers": 147,
+     "mrr": 52101.87
+    },
+    "midmarket": {
+     "customers": 542,
+     "mrr": 57818.71
+    },
+    "smb": {
+     "customers": 827,
+     "mrr": 25725.3
+    }
+   }
+  },
+  {
+   "region": "APAC",
+   "mrr": 78840.59,
+   "share_pct": 16.9,
+   "matrix": {
+    "enterprise": {
+     "customers": 100,
+     "mrr": 32148.7
+    },
+    "midmarket": {
+     "customers": 333,
+     "mrr": 32216.03
+    },
+    "smb": {
+     "customers": 517,
+     "mrr": 14475.86
+    }
+   }
+  },
+  {
+   "region": "Other",
+   "mrr": 24167.85,
+   "share_pct": 5.2,
+   "matrix": {
+    "enterprise": {
+     "customers": 24,
+     "mrr": 7125.24
+    },
+    "midmarket": {
+     "customers": 137,
+     "mrr": 12416.75
+    },
+    "smb": {
+     "customers": 174,
+     "mrr": 4625.86
+    }
+   }
+  }
+ ],
+ "anomalies": [
+  {
+   "month": "2025-05",
+   "metric": "actual_mrr",
+   "direction": "spike",
+   "value": 463610.92,
+   "z_score": 2.1,
+   "delta_from_mean": 47359.5,
+   "delta_pct": 11.4
+  },
+  {
+   "month": "2025-04",
+   "metric": "actual_mrr",
+   "direction": "spike",
+   "value": 454333.46,
+   "z_score": 2.0,
+   "delta_from_mean": 44885.13,
+   "delta_pct": 11.0
+  },
+  {
+   "month": "2025-03",
+   "metric": "churn_rate",
+   "direction": "drop",
+   "value": 2.97,
+   "z_score": -2.62,
+   "delta_from_mean": -0.61,
+   "delta_pct": -17.0
+  },
+  {
+   "month": "2025-02",
+   "metric": "new_customers",
+   "direction": "drop",
+   "value": 177.0,
+   "z_score": -3.33,
+   "delta_from_mean": -58.17,
+   "delta_pct": -24.7
+  },
+  {
+   "month": "2025-02",
+   "metric": "marketing_spend",
+   "direction": "drop",
+   "value": 105272.93,
+   "z_score": -2.14,
+   "delta_from_mean": -34381.05,
+   "delta_pct": -24.6
+  },
+  {
+   "month": "2024-12",
+   "metric": "marketing_spend",
+   "direction": "spike",
+   "value": 166143.53,
+   "z_score": 2.04,
+   "delta_from_mean": 28589.99,
+   "delta_pct": 20.8
+  },
+  {
+   "month": "2024-11",
+   "metric": "cac",
+   "direction": "spike",
+   "value": 750.14,
+   "z_score": 3.23,
+   "delta_from_mean": 169.08,
+   "delta_pct": 29.1
+  },
+  {
+   "month": "2024-10",
+   "metric": "actual_mrr",
+   "direction": "spike",
+   "value": 417179.98,
+   "z_score": 1.98,
+   "delta_from_mean": 47749.39,
+   "delta_pct": 12.9
+  },
+  {
+   "month": "2024-10",
+   "metric": "churn_rate",
+   "direction": "drop",
+   "value": 3.08,
+   "z_score": -2.12,
+   "delta_from_mean": -0.7,
+   "delta_pct": -18.6
+  },
+  {
+   "month": "2024-09",
+   "metric": "cac",
+   "direction": "spike",
+   "value": 703.62,
+   "z_score": 2.15,
+   "delta_from_mean": 122.66,
+   "delta_pct": 21.1
+  },
+  {
+   "month": "2024-09",
+   "metric": "arpu",
+   "direction": "drop",
+   "value": 93.54,
+   "z_score": -1.98,
+   "delta_from_mean": -2.5,
+   "delta_pct": -2.6
+  },
+  {
+   "month": "2024-08",
+   "metric": "arpu",
+   "direction": "drop",
+   "value": 93.75,
+   "z_score": -2.32,
+   "delta_from_mean": -2.62,
+   "delta_pct": -2.7
+  },
+  {
+   "month": "2024-06",
+   "metric": "arpu",
+   "direction": "drop",
+   "value": 94.34,
+   "z_score": -2.48,
+   "delta_from_mean": -2.69,
+   "delta_pct": -2.8
+  },
+  {
+   "month": "2024-05",
+   "metric": "arpu",
+   "direction": "drop",
+   "value": 95.02,
+   "z_score": -2.37,
+   "delta_from_mean": -2.31,
+   "delta_pct": -2.4
+  },
+  {
+   "month": "2024-04",
+   "metric": "arpu",
+   "direction": "drop",
+   "value": 95.42,
+   "z_score": -2.65,
+   "delta_from_mean": -2.13,
+   "delta_pct": -2.2
+  },
+  {
+   "month": "2024-01",
+   "metric": "arpu",
+   "direction": "drop",
+   "value": 96.44,
+   "z_score": -2.02,
+   "delta_from_mean": -1.83,
+   "delta_pct": -1.9
+  }
+ ],
+ "region_matrix": {
+  "North America": {
+   "enterprise": {
+    "customers": 217,
+    "mrr": 87562.16
+   },
+   "midmarket": {
+    "customers": 777,
+    "mrr": 95438.32
+   },
+   "smb": {
+    "customers": 1222,
+    "mrr": 43591.41
+   }
+  },
+  "Europe": {
+   "enterprise": {
+    "customers": 147,
+    "mrr": 52101.87
+   },
+   "midmarket": {
+    "customers": 542,
+    "mrr": 57818.71
+   },
+   "smb": {
+    "customers": 827,
+    "mrr": 25725.3
+   }
+  },
+  "APAC": {
+   "enterprise": {
+    "customers": 100,
+    "mrr": 32148.7
+   },
+   "midmarket": {
+    "customers": 333,
+    "mrr": 32216.03
+   },
+   "smb": {
+    "customers": 517,
+    "mrr": 14475.86
+   }
+  },
+  "Other": {
+   "enterprise": {
+    "customers": 24,
+    "mrr": 7125.24
+   },
+   "midmarket": {
+    "customers": 137,
+    "mrr": 12416.75
+   },
+   "smb": {
+    "customers": 174,
+    "mrr": 4625.86
+   }
+  }
+ }
+}
